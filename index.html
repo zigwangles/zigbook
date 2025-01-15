@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Book Writer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Adding Spellchecker library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typo.js/1.2.2/typo.min.js"></script>
+</head>
+<body>
+    <div class="terminal-container">
+        <!-- Command Input -->
+        <div class="command-bar">
+            <span class="prompt">book-writer $</span>
+            <input type="text" id="commandInput" placeholder="Type 'help' for commands...">
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="terminal-content">
+            <div id="outputArea" class="output-area">Welcome to Terminal Book Writer v1.0.0</div>
+            
+            <!-- Editor Area (Initially Hidden) -->
+            <div id="editorArea" class="editor-area hidden">
+                <textarea id="editor" spellcheck="true"></textarea>
+            </div>
+
+            <!-- Timeline View (Initially Hidden) -->
+            <div id="timelineView" class="timeline-view hidden">
+                <div class="timeline-container" id="timelineContainer"></div>
+            </div>
+
+            <!-- Relationship Map (Initially Hidden) -->
+            <div id="relationshipMap" class="relationship-map hidden">
+                <canvas id="relationshipCanvas"></canvas>
+            </div>
+
+            <!-- Research Notes (Initially Hidden) -->
+            <div id="researchNotes" class="research-notes hidden">
+                <div id="researchContainer"></div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="wordCount">Words: 0</span>
+            <span id="currentChapter">Chapter: None</span>
+            <span id="saveStatus">Saved</span>
+        </div>
+    </div>
+
+    <!-- Modal for Character Relationships -->
+    <div id="relationshipModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Add Relationship</h3>
+            <select id="char1Select"></select>
+            <select id="relationshipType">
+                <option value="friend">Friend</option>
+                <option value="enemy">Enemy</option>
+                <option value="family">Family</option>
+                <option value="romantic">Romantic</option>
+            </select>
+            <select id="char2Select"></select>
+            <button onclick="bookApp.addRelationship()">Add</button>
+            <button onclick="document.getElementById('relationshipModal').classList.add('hidden')">Close</button>
+        </div>
+    </div>
+
+    <!-- Templates for export (hidden) -->
+    <div id="epubTemplate" class="hidden">
+        <div id="chapterTemplate"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
